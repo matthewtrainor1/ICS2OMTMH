@@ -1,4 +1,4 @@
 # ICS2OMTMH
 
-hope
+<strong>hope</strong>
 courage - let nothibng stand in the way of doing the right thing
