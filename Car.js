@@ -1,16 +1,17 @@
 /**
-Right now the car will move if you click the mouse anywhere.
-If you want to change anything feel free too, 
-(but be sure to update the Github)
+If you click LEFT then you move left
+if you click RIGHT then you move right
 **/
 
 background(41, 41, 41);
 
-
 //varibles
-var m = [23,160,296];
+var m = [23, 160, 296];
 
-var q = 234;
+//      3rd   1st 2nd
+var l = [279, 12, 147];
+
+var q = 239;
 
 //car thing
 var Car = function (x, y) {
@@ -64,55 +65,58 @@ var carthing;
 
 var c1 = function () {
     carthing = 1;
-    noStroke ();
-    fill(41, 41, 41);
-    rect(279, q, 100, 400);
     var car = new Car (m[0],q);
     car.draw ();
 };
-
 var c2 = function () {
     carthing = 2;
-    noStroke ();
-    fill(41, 41, 41);
-    rect(12, q, 100, 400);
     var car = new Car (m[1],q);
     car.draw ();
 };
-
 var c3 = function () {
     carthing = 3;
-    noStroke ();
     fill(41, 41, 41);
-    rect(147, q, 100, 400);
+    rect(l[2], q, 100, 400);
     var car = new Car (m[2],q);
     car.draw ();
 };
 
+var w = function () {
+    noStroke();
+    fill(41, 41, 41);
+    rect(l[2], q, 100, 400);
+    rect(l[1], q, 100, 400);
+    rect(l[0], q, 100, 400);
+};
 
 //the button
 
 c1 ();
 
-mouseClicked = function(){
-  if(carthing === 1) {
-      c2 ();
-  }
-  else if(carthing === 2) {
-      c3 ();
-  }
-  else if(carthing === 3) {
-      c1 ();
-  }
+keyPressed = function () {
+    //To go left
+    
+    if(carthing === 1 && keyCode === RIGHT) {
+        w();
+        c2();
+    }
+    else if(carthing === 2 && keyCode === RIGHT) {
+        w();
+        c3 ();
+    }
+    //To go right
+
+    else if(carthing === 2 && keyCode === LEFT) {
+        w();
+        c1 ();
+    }
+    else if(carthing === 3 && keyCode === LEFT) {
+        w();
+        c2 ();
+    }
 };
 
 //the lines
 fill(250, 250, 70);
 rect(130, 0, 10, 400);
 rect(260, 0, 10, 400);
-
-/** The middles
-1st lane ==== 23
-2nd lane ==== 160
-2rd lane ==== 296
-**/
