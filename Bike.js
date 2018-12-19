@@ -4,7 +4,14 @@ background(41, 41, 41);
 
 var m = [66,200,338];
 
-var q = 335;
+//      3rd   1st 2nd
+var l = [279, 12, 147];
+
+var q = 340;
+var k = 80;
+
+var BC = color(20, 199, 25);
+var SC = color(64, 28, 5);
 
 //Bike thing
 var Bike = function (x, y) {
@@ -30,17 +37,17 @@ Bike.prototype.draw = function() {
     
     //body
     noStroke ();
-    fill(255, 102, 0);
+    fill(BC);
     ellipse(this.x, this.y + 18, 27, 44);
     
     //seat
     noStroke ();
-    fill(69, 65, 120);
+    fill(SC);
     ellipse(this.x, this.y - 16, 25, 48);
     
     //anther body
     noStroke ();
-    fill(255, 102, 0);
+    fill(BC);
     ellipse(this.x, this.y - 50, 20, 39);
     
     //handle bars
@@ -49,7 +56,7 @@ Bike.prototype.draw = function() {
     ellipse(this.x, this.y - 55, 67, 9);
     
     noStroke ();
-    fill(77, 87, 125);
+    fill(37, 56, 107);
     ellipse(this.x - 26, this.y - 55, 26, 13);
     ellipse(this.x + 26, this.y - 55, 26, 13);
     
@@ -67,7 +74,6 @@ var b1 = function () {
     var bike = new Bike (m[0],q);
     bike.draw ();
 };
-
 var b2 = function () {
     bikething = 2;
     noStroke ();
@@ -76,7 +82,6 @@ var b2 = function () {
     var bike = new Bike (m[1],q);
     bike.draw ();
 };
-
 var b3 = function () {
     bikething = 3;
     noStroke ();
@@ -86,18 +91,37 @@ var b3 = function () {
     bike.draw ();
 };
 
+var w = function () {
+    noStroke();
+    fill(41, 41, 41);
+    rect(l[2], q - k, 100, 600);
+    rect(l[1], q - k, 100, 600);
+    rect(l[0], q - k, 100, 600);
+};
+
+
 b1();
 
-mouseClicked = function(){
-  if(bikething === 1) {
-      b2 ();
-  }
-  else if(bikething === 2) {
-      b3 ();
-  }
-  else if(bikething === 3) {
-      b1 ();
-  }
+keyPressed = function () {
+    //To go left
+    
+    if(bikething === 1 && keyCode === RIGHT) {
+        w();
+        b2();
+    }
+    else if(bikething === 2 && keyCode === RIGHT) {
+        w();
+        b3 ();
+    }
+    //To go right
+    else if(bikething === 2 && keyCode === LEFT) {
+        w();
+        b1 ();
+    }
+    else if(bikething === 3 && keyCode === LEFT) {
+        w();
+        b2 ();
+    }
 };
  
  //the lines
