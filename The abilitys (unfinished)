@@ -1,4 +1,4 @@
-/**The Power Ups**/
+/**The Abilitys**/
 
 var Immortality = function (x, y) {
     noStroke();
@@ -28,16 +28,20 @@ var ImmortalityT = function (x, y) {
 var hT = function (x, y) {
     textSize(25);
     fill(0, 0, 0);
-    text("Idk", x, y);
+    text("Who Knows?", x, y);
 };
 
 var PowerUps = [Immortality, h];
 var TextP = [ImmortalityT, hT];
 
-//The Immortality power up
+//The Immortality; doest get hurt by obsticles
 TextP[0](10, 20);
 PowerUps[0](65, 68);
 
-//The Idk power up
-TextP[1](160, 20);
+//Who knows?; random ability
+TextP[1](170, 20);
 PowerUps[1](206, 40);
+fill(255, 255, 255);
+text("kit", 217, 61);
+text("kat", 217, 79);
+
