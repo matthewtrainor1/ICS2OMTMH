@@ -28,7 +28,7 @@ var ImmortalityT = function (x, y) {
 var hT = function (x, y) {
     textSize(25);
     fill(0, 0, 0);
-    text("Who Knows?", x, y);
+    text("We need ideas for what this is", x, y);
 };
 
 var PowerUps = [Immortality, h];
@@ -38,15 +38,14 @@ var TextP = [ImmortalityT, hT];
 TextP[0](10, 20);
 PowerUps[0](65, 68);
 
-//Who knows?; random ability
-TextP[1](170, 20);
+//we need an idea for what this does for you
+TextP[1](64, 42);
 PowerUps[1](206, 40);
 fill(255, 255, 255);
 text("kit", 217, 61);
 text("kat", 217, 79);
 
 //Jelly; slowes down
-
 fill(0, 0, 0);
 text("Jelly", 45, 125);
 fill(255, 153, 153);
@@ -57,3 +56,16 @@ rect(40,185,55,5);
 rect(90,135,5,55);
 rect(40,135,5,55);
 
+//candy cane; speeds up
+fill(0, 0, 0);
+text("Candy Cane", 165, 125);
+fill(255, 0, 0);
+rect(205,135,55,55);
+stroke(255, 255, 255);
+strokeWeight(4);
+line(206, 135, 305, 234);
+line(189, 135, 305, 257);
+line(226, 135, 305, 214);
+line(241, 135, 305, 197);
+line(189, 135, 305, 257);
+line(171, 135, 305, 272);
