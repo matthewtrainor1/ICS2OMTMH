@@ -12,9 +12,15 @@ var enemy = function(x,y) {
      fill(255, 0, 255);
     rect(this.x, this.y,10,10);
 };
-var roadKill = new enemy(10,10);
+var roadKill = new enemy(65,0);
+var roadKill2 = new enemy(195,-400);
+var roadKill3 = new enemy(325,-700);
 draw = function() {
     background(41, 41, 41);
     roadKill.move();
     roadKill.show();
+    roadKill2.move();
+    roadKill2.show();
+    roadKill3.move();
+    roadKill3.show();
 };
