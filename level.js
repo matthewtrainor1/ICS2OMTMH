@@ -42,13 +42,14 @@ var BackGround = function () {
     }
     
     if(idk > 330) {
+        //win screen
         background(255, 209, 209);
     }
 };
 
 var a = [30, 135, 235, 340];
 
-var Speed = 3.0;
+var Speed = 2.0;
 
 /**enemy**/
 
@@ -82,12 +83,15 @@ enemy.prototype.show = function(){
 };
 
 enemy.prototype.checkForCarGrab = function (car) {
-    if ((car.x >= this.x && car.x <= (this.x + 40)) &&
-        (car.y >= this.y && car.y <= (this.y + 40))) { 
-        println(true);
+    if ((car.x + 100>= this.x && car.x <= (this.x)) &&
+        (car.y + 30>= this.y && car.y <= (this.y))) { 
+            //death screen
+            fill(255, 0, 0);
+            ellipse(200, 200, 700, 700);
         }
 };
 
+/**enemy 2**/
 var q = 0;
 var z = -400;
 var c = -600;
@@ -148,12 +152,16 @@ draw = function() {
     BackGround();
     roadKill.move();
     roadKill.show();
+    roadKill.checkForCarGrab(CAR);
     roadDeath.move();
     roadDeath.show();
+    roadDeath.checkForCarGrab(CAR);
     roadMurder.move();
     roadMurder.show();
+    roadMurder.checkForCarGrab(CAR);
     roadIdk.move();
     roadIdk.show();
+    roadIdk.checkForCarGrab(CAR);
     CAR.move();
     CAR.show();
         
@@ -161,3 +169,4 @@ draw = function() {
     idk += Speed;
 };
                 
+    
