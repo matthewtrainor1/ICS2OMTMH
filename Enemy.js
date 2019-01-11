@@ -26,7 +26,7 @@ var enemy = function(x,y) {
     }
 };
  enemy2.prototype.show = function(){
-    image(tree, this.x, this.y,75,100);
+    image(tree, this.x, this.y, 50,100);
     
 };
 
@@ -41,15 +41,15 @@ var enemy3 = function(x,y) {
     }
 };
  enemy3.prototype.show = function(){
-    image(animal, this.x, this.y,75,75);
+    image(animal, this.x, this.y,50,60);
  };
 var roadKill = new enemy(65,0);
-var roadKill2 = new enemy(175,-415);
+var roadKill2 = new enemy(175,-915);
 var roadKill3 = new enemy(300,-1000);
 var roadKill4 = new enemy2(55,-550);
-var roadKill5 = new enemy2(175,-850);
+var roadKill5 = new enemy2(175,0);
 var roadKill6 = new enemy2(300,-300);
-var roadKill7 = new enemy3(55,-150);
+var roadKill7 = new enemy3(55,-800);
 var roadKill8 = new enemy3(175,-250);
 var roadKill9 = new enemy3(300,-900);
 draw = function() {
