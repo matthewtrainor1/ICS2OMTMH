@@ -1,122 +1,116 @@
-/**
-If you click LEFT then you move left
-if you click RIGHT then you move right
-**/
+var idk = -5100;
+var w = 346;
 
-background(41, 41, 41);
+var BackGround = function () {
+    
+    background(41, 41, 41);
+    
+    for (var c = 0; c < 3; c++) {
+        for (var r = 0; r < 50; r++) {
+            fill(255, 255, 0);
+            rect(100 * c + 100, -107 * r + w, 10, 45);
+        }
+    }
+    
+    noStroke();
+    fill(238, 255, 0);
+    rect(0,idk + 78, 400, 63);
+    
+    for(var b = 0; b < 3; b++) {
+        for(var m = 0; m < 16; m++) {
+            for(var a = 0; a < 2; a++) {
+    
+            var w = 13;
+            
+            fill(255, 0, 0);
+            rect(26 * m, 25 * b + 78 + idk, w, w);
+            
+            fill(0, 255, 30);
+            rect(39 * m + 13, 25 * a + 91 + idk, w, w);
+            
+            fill(0, 225, 255);
+            rect(39 * m, 24 * a + 91 + idk, w, w);
+            
+            fill(255, 162, 0);
+            rect(78 * m + 65, 78 + idk, w, w + 50);
+            
+            }
+        }
+    }
+    
+    if(idk > 330) {
+        //win screen
+        background(255, 209, 209);
+    }
+};
 
-//varibles
-var m = [23, 160, 296];
+var Speed = 2.0;
 
-//      3rd   1st 2nd
-var l = [279, 12, 147];
-
-var q = 239;
-
-//car thing
-var Car = function (x, y) {
+var car = function (x, y) {
     this.x = x;
     this.y = y;
 };
 
-var CAR = function(x ,y) {
-    Car.call(this, x, y);
+car.prototype.move = function() {
+    
+    var carSpeed = 2.2;
+    
+    //side to side
+    if(keyCode === RIGHT) {
+        this.x += carSpeed;
+    }
+    if(keyCode === LEFT) {
+        this.x -= carSpeed;
+    }
+    if(this.x < 10) {
+        this.x = 10;
+    }
+    if(this.x > 330) {
+        this.x = 330;
+    }
+    
+    //up and down
+    if(keyCode === UP) {
+        this.y -= carSpeed;
+    }
+    if(keyCode === DOWN) {
+        this.y += carSpeed + 0.6;
+    }
+    if(this.y < 10) {
+        this.y = 10;
+    }
+    if(this.y > 290) {
+        this.y = 290;
+    }
 };
 
-CAR.prototype = Object.create(Car.prototype);
-
-Car.prototype.draw = function() {
+car.prototype.show = function() {
     
-    //var
-    var Cbody = 80;
+    //body
+    noStroke();
+    fill(42, 209, 235);
+    rect(this.x, this.y, 57, 100, 10);
     
-    //Body
-    noStroke ();
-    fill(255, 64, 64);
-    rect(this.x, this.y, Cbody, Cbody + 56, 14);
+    fill(34, 190, 214);
+    rect(this.x + 6, this.y + 31, 45, 62, 10);
     
     //lights
-    fill(249, 255, 166);
-    ellipse(this.x + 13, this.y + 5, Cbody - 70, Cbody - 70);
-    ellipse(this.x + 66, this.y + 5, Cbody - 70, Cbody - 70);
-    
-    //Inside
-    fill(252, 98, 98);
-    rect(this.x + 8, this.y + 21, Cbody - 16, Cbody + 9, 14);
-    
-    //Windsheild
-    noStroke ();
-    fill(255, 178, 178);
-    rect(this.x + 4, this.y + 16, Cbody - 8, Cbody - 55);
-    fill(255, 209, 209);
-    rect(this.x + 8, this.y + 21, Cbody - 16, Cbody - 50, 14);
-    fill(252, 98, 98);
-    rect(this.x + 8, this.y + 41, Cbody - 16, Cbody - 65);
-    
-    //Seat
-    fill(51, 51, 51);
-    rect(this.x + 13, this.y + 65, Cbody - 25, Cbody - 49, 14);
-    fill(71, 71, 71);
-    rect(this.x + 13, this.y + 84, Cbody - 25, Cbody - 64, 14);
-    
-};
-
-var carthing;
-
-var c1 = function () {
-    carthing = 1;
-    var car = new Car (m[0],q);
-    car.draw ();
-};
-var c2 = function () {
-    carthing = 2;
-    var car = new Car (m[1],q);
-    car.draw ();
-};
-var c3 = function () {
-    carthing = 3;
-    fill(41, 41, 41);
-    rect(l[2], q, 100, 400);
-    var car = new Car (m[2],q);
-    car.draw ();
-};
-
-var w = function () {
     noStroke();
-    fill(41, 41, 41);
-    rect(l[2], q, 100, 400);
-    rect(l[1], q, 100, 400);
-    rect(l[0], q, 100, 400);
-};
-
-//the button
-
-c1 ();
-
-keyPressed = function () {
-    //To go left
+    fill(255, 243, 107);
+    ellipse(this.x + 12, this.y + 7, 10, 10);
     
-    if(carthing === 1 && keyCode === RIGHT) {
-        w();
-        c2();
-    }
-    else if(carthing === 2 && keyCode === RIGHT) {
-        w();
-        c3 ();
-    }
-    //To go right
-
-    else if(carthing === 2 && keyCode === LEFT) {
-        w();
-        c1 ();
-    }
-    else if(carthing === 3 && keyCode === LEFT) {
-        w();
-        c2 ();
-    }
+    fill(255, 243, 107);
+    ellipse(this.x + 45, this.y + 7, 10, 10);
 };
 
-//the lines
-fill(250, 250, 70);
-rect(130, 0, 10, 400);
-rect(260, 0, 10, 400);
+var CAR = new car(10, 290);
+
+draw = function() {
+    BackGround();
+    CAR.move();
+    CAR.show();
+    
+    idk += Speed;
+    w += Speed;
+};
+
